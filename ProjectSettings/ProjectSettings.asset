@@ -512,7 +512,7 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: MusicGame
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: C:\Users\rc317\Source\Repos\kkbox_vr\MusicGame\Assets\WSATestCertificate.pfx
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
