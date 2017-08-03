@@ -1,9 +1,11 @@
-﻿public enum CommandType
+﻿using HoloToolkit.Sharing;
+
+public enum CommandType : byte
 {
     /// <summary>
     /// 開始遊戲
     /// </summary>
-    Start,
+    Start = MessageID.UserMessageIDStart,
 
     /// <summary>
     /// 接受遊戲
