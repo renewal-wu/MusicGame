@@ -516,7 +516,7 @@ PlayerSettings:
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
-  metroCertificateNotAfter: 00bf80d3b029d401
+  metroCertificateNotAfter: 8082f592232bd401
   metroApplicationDescription: MusicGame
   wsaImages: {}
   metroTileShortName: 
