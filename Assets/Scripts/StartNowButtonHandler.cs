@@ -14,8 +14,7 @@ public class StartNowButtonHandler : MonoBehaviour
     private void Awake()
     {
         StartNowButton.interactable = true;
-
-        GameManager.Instance.ConnectionStarted -= Instance_ConnectionStarted;
+        
         GameManager.Instance.ConnectionStarted += Instance_ConnectionStarted;
     }
 

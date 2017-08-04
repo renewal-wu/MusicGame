@@ -8,10 +8,22 @@ public class StartNewGameManager : MonoBehaviour {
 
     public GameObject WaitContainer;
 
+    public GameObject AcceptIniteContainer;
+
     void Awake()
     {
         StartContainer.SetActive(true);        
         WaitContainer.SetActive(false);
+        AcceptIniteContainer.SetActive(false);
+
+        GameManager.Instance.GameStartCommandReceived += Instance_GameStartCommandReceived;
+    }
+
+    private void Instance_GameStartCommandReceived(object sender, System.EventArgs e)
+    {
+        StartContainer.SetActive(false);
+        WaitContainer.SetActive(false);
+        AcceptIniteContainer.SetActive(true);
     }
 
     // Use this for initialization
