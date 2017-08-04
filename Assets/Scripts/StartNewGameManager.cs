@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// https://onedrive.live.com/view.aspx?resid=E5D8C3F4EFAEC162!2592141&ithint=file%2cdocx&app=Word&authkey=!AKyw0BzT-t2zUv8
+/// </summary>
 public class StartNewGameManager : MonoBehaviour {
 
     public GameObject StartContainer;
@@ -15,8 +18,6 @@ public class StartNewGameManager : MonoBehaviour {
         StartContainer.SetActive(true);        
         WaitContainer.SetActive(false);
         AcceptIniteContainer.SetActive(false);
-
-        GameManager.Instance.GameStartCommandReceived += Instance_GameStartCommandReceived;
     }
 
     private void Instance_GameStartCommandReceived(object sender, System.EventArgs e)
