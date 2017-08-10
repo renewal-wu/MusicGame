@@ -525,7 +525,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 563464267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93103fdcd694506428f8e35a519c6706, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ea3882b5872d04b960fb29a00064d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StartNowButton: {fileID: 563464269}
@@ -710,6 +710,9 @@ GameObject:
   m_Component:
   - component: {fileID: 864678590}
   - component: {fileID: 864678591}
+  - component: {fileID: 864678592}
+  - component: {fileID: 864678593}
+  - component: {fileID: 864678594}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -742,6 +745,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentGameCountdownSeconds: 60
+--- !u!114 &864678592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 864678589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632d32d2fe00f774eb9f7cf72a1edc87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &864678593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 864678589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08bde6de889eabe4085a87d461a41ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &864678594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 864678589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e41081c1d6f74f145ac7f8a56607521c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartContainer: {fileID: 1346392602}
+  WaitContainer: {fileID: 417320341}
+  InviteContainer: {fileID: 927312122}
 --- !u!1 &927312122
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,12 +790,12 @@ GameObject:
   m_Component:
   - component: {fileID: 927312123}
   m_Layer: 0
-  m_Name: AcceptInviteContainer
+  m_Name: InviteContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &927312123
 Transform:
   m_ObjectHideFlags: 0
@@ -902,7 +941,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1083984438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4817aa0bca7b92f4387509ecb4a41c4f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d1e06863bc5d3140bdb3a0b3628c412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1185115622
@@ -1133,49 +1172,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1400870643
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1400870644}
-  - component: {fileID: 1400870645}
-  m_Layer: 0
-  m_Name: StartNewGameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1400870644
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1400870643}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 509.42096, y: -78.4299, z: 142.48218}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1400870645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1400870643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd194f9f39635ec4ba03a07c98bc1ad4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartContainer: {fileID: 1346392602}
-  WaitContainer: {fileID: 417320341}
-  AcceptIniteContainer: {fileID: 927312122}
 --- !u!1 &1540075077
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,11 +1377,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1629507003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100bfec3dc6f6be45abb456e7c3126d2, type: 3}
+  m_Script: {fileID: 11500000, guid: b3f1584acafe46b4ea45c8e87bed5a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StartContainer: {fileID: 1346392602}
-  AcceptIniteContainer: {fileID: 927312122}
+  IniteContainer: {fileID: 927312122}
 --- !u!1 &1736873165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,7 +1744,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2049621826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44cb23f733119834f9d3d270629ab592, type: 3}
+  m_Script: {fileID: 11500000, guid: 98b1219d0d292e946b3cad9b54d7f4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StartContainer: {fileID: 1346392602}

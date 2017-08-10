@@ -14,16 +14,6 @@ public class StartNowButtonHandler : MonoBehaviour
     private void Awake()
     {
         StartNowButton.interactable = true;
-        
-        GameManager.Instance.ConnectionStarted += Instance_ConnectionStarted;
-    }
-
-    private void Instance_ConnectionStarted(object sender, System.EventArgs e)
-    {
-        if (StartNowButton != null)
-        {
-            StartNowButton.interactable = GameManager.Instance.IsConnectionStarted;
-        }
     }
 
     // Use this for initialization
@@ -35,18 +25,19 @@ public class StartNowButtonHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //StartNowButton.interactable = GameManager.Instance.IsConnectionStarted;
     }
 
     private void OnDestroy()
     {
-        GameManager.Instance.ConnectionStarted -= Instance_ConnectionStarted;
     }
 
     public void OnClick()
     {
         StartContainer.SetActive(false);
         WaitContainer.SetActive(true);
+        GameSceneUtility.Instance.IsWaittingOtherGamer = true;
+        //GameManager.Instance.StartGame();
 
         Debug.Log("start now game button be clicked, need display waiting other user ....");
     }
