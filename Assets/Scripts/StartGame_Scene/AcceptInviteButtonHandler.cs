@@ -17,8 +17,8 @@ public class AcceptInviteButtonHandler : MonoBehaviour {
 
     public void OnClick()
     {
-        GameSceneUtility.Instance.IsWaittingOtherGamer = false;
+        MusicGameController.Instance.IsWaittingOtherGamer = false;
         GameManager.Instance.AcceptGame(GameManager.Instance.LocalUserData);
-        SceneManager.LoadScene("Gaming");
+        SceneManager.LoadScene(1);
     }
 }

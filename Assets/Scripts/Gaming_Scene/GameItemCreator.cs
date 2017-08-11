@@ -48,7 +48,7 @@ public class GameItemCreator : MonoBehaviour
             LastGenerateTime = DateTime.UtcNow;
 
             UnityEngine.Random.InitState(System.Guid.NewGuid().GetHashCode());
-            //GenerateGameItem(this.transform);
+            GenerateGameItem(this.transform);
             StartCoroutine(DelayGenerate());
         }
     }

@@ -36,7 +36,7 @@ public class StartNowButtonHandler : MonoBehaviour
     {
         StartContainer.SetActive(false);
         WaitContainer.SetActive(true);
-        GameSceneUtility.Instance.IsWaittingOtherGamer = true;
+        MusicGameController.Instance.IsWaittingOtherGamer = true;
         //GameManager.Instance.StartGame();
 
         Debug.Log("start now game button be clicked, need display waiting other user ....");

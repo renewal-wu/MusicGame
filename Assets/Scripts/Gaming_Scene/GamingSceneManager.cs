@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
+using System;
 
 public class GamingSceneManager : MonoBehaviour
 {
@@ -13,26 +14,35 @@ public class GamingSceneManager : MonoBehaviour
 
     private float MergeHeight = -160;
 
+    private DateTime lastDateTime;
+
     // Use this for initialization
     void Start()
     {
+        MusicGameController.Instance.IsWaittingOtherGamer = false;
+
         GameManager.Instance.GameEnded += Instance_GameEnded;
         GameManager.Instance.ScoreUpdated += Instance_ScoreUpdated;
         GameManager.Instance.ParticipantsUpdated += Instance_ParticipantsUpdated;
 
         ParticipantsObjects = new Dictionary<UserData, GameObject>();
 
-        //for (int i = 0; i < 5; i++)
-        //{
-        //    UserData user = new UserData
-        //    {
-        //        Id = i,
-        //        Name = $"pou{i}",
-        //        Score = i
-        //    };
+        // 測試資料
+        for (int i = 0; i < 5; i++)
+        {
+            UserData user = new UserData
+            {
+                Id = i,
+                Name = $"pou{i}",
+                Score = i
+            };
 
-        //    Instance_ScoreUpdated(null, user);
-        //}
+            Instance_ScoreUpdated(null, user);
+        }
+
+        GameManager.Instance.StartGame();
+
+        lastDateTime = DateTime.UtcNow.AddSeconds(GameManager.GameCountdownSeconds);
     }
 
     private void Instance_ParticipantsUpdated(object sender, System.EventArgs e)
@@ -44,14 +54,17 @@ public class GamingSceneManager : MonoBehaviour
 
             if (existUser == null)
             {
-                GenerateNewUser(new UserData
+                var newUser = new UserData
                 {
                     Id = item.Value,
                     Name = item.Key
-                });
+                };
+
+                MergeHeight -= 25f;
+                var newItem = MusicGameController.Instance.GenerateSocreItem(ParticipantsScoreArea.transform, -300, MergeHeight, item.Key, 0);
+                ParticipantsObjects.Add(newUser, newItem);
             }
         }
-
     }
 
     private void Instance_ScoreUpdated(object sender, UserData e)
@@ -61,8 +74,8 @@ public class GamingSceneManager : MonoBehaviour
 
         if (existUser == null)
         {
-            // 
-            GenerateNewUser(e);
+            // 測試資料
+            //GenerateNewUser(e);
             return;
         }
 
@@ -72,6 +85,10 @@ public class GamingSceneManager : MonoBehaviour
 
     private void Instance_GameEnded(object sender, System.EventArgs e)
     {
+        var users = ParticipantsObjects.Keys.ToList();
+        users.Add(GameManager.Instance.LocalUserData);
+        MusicGameController.Instance.Participants = users;
+
         SceneManager.LoadScene("GameEnded");
     }
 
@@ -83,6 +100,12 @@ public class GamingSceneManager : MonoBehaviour
         if (text != null && GameManager.Instance.LocalUserData != null)
         {
             text.text = $"Self Score: {GameManager.Instance.LocalUserData.Score}";
+        }
+
+        if (DateTime.UtcNow >= lastDateTime)
+        {
+            Instance_GameEnded(null, EventArgs.Empty);
+            lastDateTime = DateTime.UtcNow.AddDays(1);
         }
     }
 

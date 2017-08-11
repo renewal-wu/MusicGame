@@ -12,25 +12,25 @@ public class CancelWaittingButtonHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        waitingCount = GameSceneUtility.Instance.MAX_WAITTING_TIME_SECOND;
+        waitingCount = MusicGameController.Instance.MAX_WAITTING_TIME_SECOND;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameSceneUtility.Instance.IsWaittingOtherGamer)
+        if (MusicGameController.Instance.IsWaittingOtherGamer)
         {
             waitingCount -= 1;
 
             if (waitingCount <= 0)
             {
-                GameSceneUtility.Instance.IsWaittingOtherGamer = false;
-                SceneManager.LoadScene("Gaming");
+                MusicGameController.Instance.IsWaittingOtherGamer = false;
+                SceneManager.LoadScene(1);
             }
         }
         else
         {
-            waitingCount = GameSceneUtility.Instance.MAX_WAITTING_TIME_SECOND;
+            waitingCount = MusicGameController.Instance.MAX_WAITTING_TIME_SECOND;
         }
     }
 
@@ -38,12 +38,7 @@ public class CancelWaittingButtonHandler : MonoBehaviour
     {
         WaitContainer.SetActive(false);
         StartContainer.SetActive(true);
-        GameSceneUtility.Instance.IsWaittingOtherGamer = false;
+        MusicGameController.Instance.IsWaittingOtherGamer = false;
         Debug.Log("cancel waitting, and display start now button.");
-    }
-
-    private void OnDestroy()
-    {
-        
     }
 }
