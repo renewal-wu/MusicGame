@@ -28,7 +28,7 @@ class GameEndedSceneManager : MonoBehaviour
         foreach (var item in users)
         {
             MergeHeight -= 0.25f;
-            var newItem = MusicGameController.Instance.GenerateSocreItem(ScoreCanvas.transform, 0, MergeHeight, item.Name, item.Score);
+            var newItem = MusicGameController.Instance.GenerateSocreItem(ScoreCanvas.transform, 10, MergeHeight, item.Name, item.Score);
         }
     }
 

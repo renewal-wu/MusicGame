@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using HoloToolkit.Sharing;
 using HoloToolkit.Unity;
 using UnityEngine;
+#if NETFX_CORE
+using Windows.Security.ExchangeActiveSyncProvisioning;
+#endif
 
 public class GameConnector : Singleton<GameConnector>
 {
@@ -40,6 +43,11 @@ public class GameConnector : Singleton<GameConnector>
     private void Start()
     {
         LocalUserData = new UserData();
+
+#if NETFX_CORE
+        EasClientDeviceInformation deviceInfo = new EasClientDeviceInformation();
+        LocalUserData.Name = deviceInfo.FriendlyName;
+#endif
 
         if (SharingStage.Instance.IsConnected)
         {

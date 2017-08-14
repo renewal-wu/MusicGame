@@ -64,8 +64,8 @@ public class GameItemCreator : MonoBehaviour
 
         // set postiion
         Vector3 position = transform.position;
-        position.x = UnityEngine.Random.Range(-3f, 3f);
-        position.z = UnityEngine.Random.Range(3f, 8f);
+        position.x = UnityEngine.Random.Range(-1f, 1f);
+        position.z = UnityEngine.Random.Range(5f, 10f);
         newItem.transform.position = position;
         newItem.transform.parent = parentTransform;
 

@@ -28,19 +28,17 @@ public class GamingSceneManager : MonoBehaviour
         ParticipantsObjects = new Dictionary<UserData, GameObject>();
 
         // 測試資料
-        for (int i = 0; i < 5; i++)
-        {
-            UserData user = new UserData
-            {
-                Id = i,
-                Name = $"pou{i}",
-                Score = i
-            };
-
-            Instance_ScoreUpdated(null, user);
-        }
-
-        GameManager.Instance.StartGame();
+        //for (int i = 0; i < 5; i++)
+        //{
+        //    UserData user = new UserData
+        //    {
+        //        Id = i,
+        //        Name = $"pou{i}",
+        //        Score = i
+        //    };
+        //    Instance_ScoreUpdated(null, user);
+        //}
+        //GameManager.Instance.StartGame();
 
         lastDateTime = DateTime.UtcNow.AddSeconds(GameManager.GameCountdownSeconds);
     }
