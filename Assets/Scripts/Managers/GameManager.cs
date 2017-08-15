@@ -5,7 +5,7 @@ using HoloToolkit.Sharing;
 using HoloToolkit.Unity;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour //: Singleton<GameManager>
+public class GameManager : Singleton<GameManager>
 {
     /// <summary>
     /// 開始遊戲的倒數計時秒數限制
