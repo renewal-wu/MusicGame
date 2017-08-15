@@ -5,7 +5,7 @@ using HoloToolkit.Sharing;
 using HoloToolkit.Unity;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour // Singleton<GameManager>
 {
     /// <summary>
     /// 開始遊戲的倒數計時秒數限制
@@ -116,12 +116,25 @@ public class GameManager : Singleton<GameManager>
 
     private static GameManager instance = null;
 
+    public static GameManager Instance { get { return instance; } }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     private void Start()
     {
         GameConnector.Instance.ConnectionStarted += Instance_ConnectionStarted;
         GameConnector.Instance.MessageHandlerInitialed += Instance_MessageHandlerInitialed;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()

@@ -8,7 +8,7 @@ using UnityEngine;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 #endif
 
-public class GameConnector : Singleton<GameConnector>
+public class GameConnector : MonoBehaviour // Singleton<GameConnector>
 {
     /// <summary>
     /// 連線已建立
@@ -40,6 +40,23 @@ public class GameConnector : Singleton<GameConnector>
     private NetworkConnectionAdapter connectionAdapter;
     private NetworkConnection serverConnection;
 
+    private static GameConnector instance = null;
+
+    public static GameConnector Instance { get { return instance; } }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     private void Start()
     {
         LocalUserData = new UserData();
@@ -57,8 +74,6 @@ public class GameConnector : Singleton<GameConnector>
         {
             SharingStage.Instance.SharingManagerConnected += Connected;
         }
-
-        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Connected(object sender = null, EventArgs e = null)
@@ -219,17 +234,17 @@ public class GameConnector : Singleton<GameConnector>
         msg.Write(participantsString);
     }
 
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
+    //protected override void OnDestroy()
+    //{
+    //    base.OnDestroy();
 
-        if (serverConnection != null)
-        {
-            for (byte index = (byte)CommandType.Start; index < (byte)CommandType.UpdateScore; index++)
-            {
-                serverConnection.RemoveListener((byte)index, connectionAdapter);
-            }
-            connectionAdapter.MessageReceivedCallback -= OnMessageReceived;
-        }
-    }
+    //    if (serverConnection != null)
+    //    {
+    //        for (byte index = (byte)CommandType.Start; index < (byte)CommandType.UpdateScore; index++)
+    //        {
+    //            serverConnection.RemoveListener((byte)index, connectionAdapter);
+    //        }
+    //        connectionAdapter.MessageReceivedCallback -= OnMessageReceived;
+    //    }
+    //}
 }
