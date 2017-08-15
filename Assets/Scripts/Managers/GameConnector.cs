@@ -101,6 +101,8 @@ public class GameConnector : Singleton<GameConnector>
 
             serverConnection.AddListener(index, connectionAdapter);
         }
+
+        OnMessageHandlerInitialed();
     }
 
     private void OnMessageReceived(NetworkConnection connection, NetworkInMessage msg)
@@ -163,7 +165,7 @@ public class GameConnector : Singleton<GameConnector>
     {
         if (serverConnection != null && serverConnection.IsConnected())
         {
-            NetworkOutMessage msg = CreateMessage((byte)CommandType.Accept);
+            NetworkOutMessage msg = CreateMessage((byte)CommandType.Begin);
 
             AppendParticipants(msg, participants);
 

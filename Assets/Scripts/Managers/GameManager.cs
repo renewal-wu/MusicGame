@@ -202,7 +202,10 @@ public class GameManager : MonoBehaviour //: Singleton<GameManager>
 
         IsGameStarting = true;
 
-        GameConnector.Instance.SendBeginCommand(Participants);
+        if (IsOwner)
+        {
+            GameConnector.Instance.SendBeginCommand(Participants);
+        }
 
         OnGameBegun();
     }
@@ -237,7 +240,7 @@ public class GameManager : MonoBehaviour //: Singleton<GameManager>
     private void AcceptCommandReceived(UserData userData, NetworkInMessage msg)
     {
         var targetUserId = msg.ReadInt64();
-        if (GameConnector.Instance.LocalUserData.Id != targetUserId)
+        if (GameConnector.Instance.LocalUserData.Id == targetUserId)
         {
             return;
         }
@@ -265,6 +268,7 @@ public class GameManager : MonoBehaviour //: Singleton<GameManager>
         var participantsString = msg.ReadString();
         Participants = JsonUtility.FromJson<Dictionary<string, int>>(participantsString);
         OnParticipantsUpdated();
+        BeginGame();
     }
 
     /// <summary>
