@@ -4054,8 +4054,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1353161467}
-  - component: {fileID: 1353161469}
-  - component: {fileID: 1353161468}
   - component: {fileID: 1353161471}
   m_Layer: 0
   m_Name: GameManagers
@@ -4077,29 +4075,6 @@ Transform:
   m_Father: {fileID: 66103466}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1353161468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1353161466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 632d32d2fe00f774eb9f7cf72a1edc87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1353161469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1353161466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90923e9191f9f5d4e9d75d0a5c8bc9b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentGameCountdownSeconds: 60
 --- !u!114 &1353161471
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -57,6 +57,8 @@ public class GameConnector : Singleton<GameConnector>
         {
             SharingStage.Instance.SharingManagerConnected += Connected;
         }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Connected(object sender = null, EventArgs e = null)

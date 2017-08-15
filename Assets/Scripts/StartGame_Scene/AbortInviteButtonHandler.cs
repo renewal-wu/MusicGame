@@ -6,7 +6,7 @@ public class AbortInviteButtonHandler : MonoBehaviour {
 
     public GameObject StartContainer;
 
-    public GameObject IniteContainer;
+    public GameObject InviteContainer;
 
     // Use this for initialization
     void Start () {
@@ -20,7 +20,7 @@ public class AbortInviteButtonHandler : MonoBehaviour {
 
     public void OnClick()
     {
-        IniteContainer.SetActive(false);
+        InviteContainer.SetActive(false);
         StartContainer.SetActive(true);
     }
 }

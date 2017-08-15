@@ -1,12 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class AcceptInviteButtonHandler : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public GameObject WaitContainer;
+
+    public GameObject InviteContainer;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -17,8 +18,9 @@ public class AcceptInviteButtonHandler : MonoBehaviour {
 
     public void OnClick()
     {
-        MusicGameController.Instance.IsWaittingOtherGamer = false;
+        // 送出 accept 等待收到 GameBegun
         GameManager.Instance.AcceptGame(GameManager.Instance.LocalUserData);
-        SceneManager.LoadScene(1);
+        WaitContainer.SetActive(true);
+        InviteContainer.SetActive(false);
     }
 }

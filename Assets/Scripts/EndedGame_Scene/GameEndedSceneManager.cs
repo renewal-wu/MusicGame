@@ -18,17 +18,26 @@ class GameEndedSceneManager : MonoBehaviour
 
     private void Start()
     {
-        if (MusicGameController.Instance.Participants == null || MusicGameController.Instance.Participants.Count == 0)
+        if (MusicGameUtility.IsSingleModel)
         {
+            var selfItem = GameManager.Instance.LocalUserData;
+            MergeHeight -= 0.25f;
+            var newItem = MusicGameUtility.GenerateSocreItem(ScoreCanvas.transform, 10, MergeHeight, selfItem.Name, selfItem.Score);
             return;
         }
 
-        var users = MusicGameController.Instance.Participants.OrderByDescending(x => x.Score);
+        if (GameManager.Instance.Participants == null || GameManager.Instance.Participants.Count == 0)
+        {
+            return;
+        }
+        
+        // key: user name; value: score
+        var users = GameManager.Instance.Participants.OrderByDescending(x => x.Value);
 
         foreach (var item in users)
         {
             MergeHeight -= 0.25f;
-            var newItem = MusicGameController.Instance.GenerateSocreItem(ScoreCanvas.transform, 10, MergeHeight, item.Name, item.Score);
+            var newItem = MusicGameUtility.GenerateSocreItem(ScoreCanvas.transform, 10, MergeHeight, item.Key, item.Value);
         }
     }
 
