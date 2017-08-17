@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HUX.Interaction;
+using HUX.Receivers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// <para>1. 抓出資料 + Sort 最高分</para>
 /// <para>2. 顯示粒子系統</para>
 /// <para>3. 回到 Scene 1</para>
 /// </summary>
-class GameEndedSceneManager : MonoBehaviour
+class GameEndedSceneManager : InteractionReceiver
 {
     public GameObject ScoreCanvas;
 
@@ -44,5 +47,15 @@ class GameEndedSceneManager : MonoBehaviour
     private void Update()
     {
         
+    }
+
+    protected override void OnTapped(GameObject obj, InteractionManager.InteractionEventArgs eventArgs)
+    {
+        base.OnTapped(obj, eventArgs);
+
+        if (obj.name == "EndButton")
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
